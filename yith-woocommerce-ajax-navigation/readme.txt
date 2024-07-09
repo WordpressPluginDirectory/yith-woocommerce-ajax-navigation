@@ -1,10 +1,10 @@
 === YITH WooCommerce Ajax Product Filter ===
 
 Contributors: yithemes
-Tags: woocommerce ajax product filter download, woocommerce, widget, ajax, ajax filtered nav, ajax navigation, ajax filtered navigation, woocommerce layered navigation, woocommerce layered nav, product filter, product filters, ajax product filter, woocommerce ajax product filter, woocommerce filters, sidebar filter, sidebar ajax filter, ajax price filter, price filter, product sorting, woocommerce filter, taxonomy filter, attribute filter, attributes filter, woocommerce product sort, ajax sort, woocommerce ajax product filter, advanced product filters, ajax product filters, filters, woocommerce ajax product filters, woocommerce product filters, woocommerce product filters, category filter, attribute filters, woocommerce products filter, woocommerce price filter, yit, yith, yithemes
+Tags: shop filter, Ajax product filter, product filter, woocommerce product filter, woocommerce filter
 Requires at least: 6.3
-Tested up to: 6.5
-Stable tag: 5.1.0
+Tested up to: 6.6
+Stable tag: 5.3.0
 Requires PHP: 7.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -157,6 +157,26 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 14. Gutenberg block
 
 == Changelog ==
+
+= 5.3.0 - Released on 08 July 2024 =
+
+* New: support for WooCommerce 9.1
+* New: support for WordPress 6.6
+* New: exclude bots from filtering action
+* Update: YITH plugin framework
+
+= 5.2.0 - Released on 24 June 2024 =
+
+* New: support for WooCommerce 9.0
+* New: added table for cache management
+* Update: YITH plugin framework
+* Fix: fatal error when saving post, due to call to wrong method (protected) on Cache_Providere class
+* Fix: Passing null to parameter #1 ($num) of type int|float is deprecated
+* Fix: fatal error on array_values(), Argument #1 ($array) must be of type array, null given
+* Fix: prevent possible XSS on legacy widgets
+* Fix: avoid query error in variations filtering, when filtered attribute set is empty
+* Fix: select fields not correctly initialized when adding new filter to the preset
+* Tweak: changed type of taxonomy labels shown during filter configuration
 
 = 5.1.0 - Released on 20 May 2024 =
 
