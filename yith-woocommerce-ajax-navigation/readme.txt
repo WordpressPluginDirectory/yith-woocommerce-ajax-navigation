@@ -2,9 +2,9 @@
 
 Contributors: yithemes
 Tags: shop filter, Ajax product filter, product filter, woocommerce product filter, woocommerce filter
-Requires at least: 6.5
-Tested up to: 6.7
-Stable tag: 5.7.0
+Requires at least: 6.6
+Tested up to: 6.8
+Stable tag: 5.13.0
 Requires PHP: 7.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -157,6 +157,49 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 14. Gutenberg block
 
 == Changelog ==
+
+= 5.13.0 - Released on 7 August 2025 =
+
+* New: support for WooCommerce 10.1
+* Update: YITH plugin framework
+
+= 5.12.0 - Released on 7 July 2025 =
+
+* New: support for WooCommerce 10.0
+* Update: YITH plugin framework
+* Dev: added new filter yith_wcan_show_more_terms_text
+
+= 5.11.1 - Released on 9 June 2025 =
+
+* Tweak: make sure that get_filter_terms AJAX call returns items with a format that will allow them preserve original sorting when converted back from JSON to JS object
+
+= 5.11.0 - Released on 4 June 2025 =
+
+* New: support for WooCommerce 9.9
+* New: introduced system to normalize data before dbDelta is executed on a database update
+* Tweak: updated cache group column size: changed from 255 to 100 for better performance and compatibility
+* Tweak: bumped db version
+* Update: YITH plugin framework
+
+= 5.10.0 - Released on 23 April 2025 =
+
+* New: support for WordPress 6.8
+* Update: YITH plugin framework
+
+= 5.9.0 - Released on 19 March 2025 =
+
+* New: support for WooCommerce 9.8
+* New: add locale to Admin AJAX calls
+* Tweak: localized locale for admin scripts
+* Tweak: filter locale in admin when WPML is active
+* Update: YITH plugin framework
+* Fix: wrong taxonomy shown on loading more filters in the backend
+* Dev: added new filter yith_wcan_filter_tax_get_term_children_count
+
+= 5.8.0 - Released on 20 February 2025 =
+
+* New: support for WooCommerce 9.7
+* Update: YITH plugin framework
 
 = 5.7.0 - Released on 28 January 2025 =
 
