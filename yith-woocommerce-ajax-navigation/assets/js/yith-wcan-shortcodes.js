@@ -598,15 +598,17 @@ var YITH_WCAN_Dropdown = /*#__PURE__*/function () {
       (_this$$_main = this.$_main) === null || _this$$_main === void 0 ? void 0 : (_this$$_main$on = _this$$_main.on('click', function (ev) {
         ev.stopPropagation();
         _this.toggleDropdown();
-      })) === null || _this$$_main$on === void 0 ? void 0 : _this$$_main$on.on('keypress', function (ev) {
+      })) === null || _this$$_main$on === void 0 ? void 0 : _this$$_main$on.on('keyup', function (ev) {
         if (!Object.values(keys).includes(ev.keyCode)) {
           return;
         }
         ev.preventDefault();
-        if ([keys.enter, keys.up].includes(ev.keyCode)) {
+        if ([keys.enter, keys.space].includes(ev.keyCode)) {
           _this.toggleDropdown();
+          return false;
         } else if (keys.esc === ev.keyCode) {
           _this.closeDropdown();
+          return false;
         }
       });
       this.$_dropdown.on('click', function (ev) {
@@ -614,11 +616,17 @@ var YITH_WCAN_Dropdown = /*#__PURE__*/function () {
       });
 
       // search event
-      (_this$$_search = this.$_search) === null || _this$$_search === void 0 ? void 0 : _this$$_search.on('keyup search change', function () {
+      (_this$$_search = this.$_search) === null || _this$$_search === void 0 ? void 0 : _this$$_search.on('keyup search', function (_ref) {
+        var keyCode = _ref.keyCode;
+        if (keyCode && keyCode === keys.esc) {
+          return;
+        }
         _this.paginate = false;
         _this._populateItems().then(function () {
           _this.needsRefresh = true;
         });
+        return false;
+      }).on('change', function () {
         return false;
       });
 
@@ -790,9 +798,9 @@ var YITH_WCAN_Dropdown = /*#__PURE__*/function () {
       var matchingElements = this._items,
         promise;
       promise = new Promise(function (resolve) {
-        matchingElements = search ? matchingElements.filter(function (_ref) {
-          var label = _ref.label,
-            value = _ref.value;
+        matchingElements = search ? matchingElements.filter(function (_ref2) {
+          var label = _ref2.label,
+            value = _ref2.value;
           var regex = new RegExp('.*' + search + '.*', 'i');
           return regex.test(value) || regex.test(label);
         }) : matchingElements;
@@ -835,9 +843,9 @@ var YITH_WCAN_Dropdown = /*#__PURE__*/function () {
       var indexes = [];
 
       // remove duplicates and sort array of results
-      return items.filter(function (_ref2) {
-        var value = _ref2.value,
-          label = _ref2.label;
+      return items.filter(function (_ref3) {
+        var value = _ref3.value,
+          label = _ref3.label;
         if (-1 === indexes.indexOf(value)) {
           indexes.push(value);
 
@@ -882,7 +890,7 @@ var YITH_WCAN_Dropdown = /*#__PURE__*/function () {
         'data-title': option.length ? option.data('title') : '',
         tabindex: -1
       });
-      $item.on('keypress', function (ev) {
+      $item.on('keyup', function (ev) {
         if (!Object.values(keys).includes(ev === null || ev === void 0 ? void 0 : ev.keyCode)) {
           return;
         }
@@ -928,9 +936,9 @@ var YITH_WCAN_Dropdown = /*#__PURE__*/function () {
       return this.getItems(search).then(function (items) {
         _this6._emptyItems();
         _this6._hideLoadMore();
-        _this6.$_items.append(items.map(function (_ref3) {
-          var label = _ref3.label,
-            value = _ref3.value;
+        _this6.$_items.append(items.map(function (_ref4) {
+          var label = _ref4.label,
+            value = _ref4.value;
           return _this6._generateItem(value, label);
         }));
         _this6.$originalSelect.trigger('yith_wcan_dropdown_updated');

@@ -169,17 +169,19 @@ export default class YITH_WCAN_Dropdown {
 				ev.stopPropagation();
 				this.toggleDropdown();
 			} )
-			?.on( 'keypress', ( ev ) => {
+			?.on( 'keyup', ( ev ) => {
 				if ( ! Object.values( keys ).includes( ev.keyCode ) ) {
 					return;
 				}
 
 				ev.preventDefault();
 
-				if ( [ keys.enter, keys.up ].includes( ev.keyCode ) ) {
+				if ( [ keys.enter, keys.space ].includes( ev.keyCode ) ) {
 					this.toggleDropdown();
+					return false;
 				} else if ( keys.esc === ev.keyCode ) {
 					this.closeDropdown();
+					return false;
 				}
 			} );
 		this.$_dropdown.on( 'click', ( ev ) => {
@@ -187,14 +189,20 @@ export default class YITH_WCAN_Dropdown {
 		} );
 
 		// search event
-		this.$_search?.on( 'keyup search change', () => {
-			this.paginate = false;
+		this.$_search
+			?.on( 'keyup search', ( { keyCode } ) => {
+				if ( keyCode && keyCode === keys.esc ) {
+					return;
+				}
 
-			this._populateItems().then( () => {
-				this.needsRefresh = true;
-			} );
-			return false;
-		} );
+				this.paginate = false;
+
+				this._populateItems().then( () => {
+					this.needsRefresh = true;
+				} );
+				return false;
+			} )
+			.on( 'change', () => false );
 
 		// select event
 		this.$_items.on( 'change', ':input', ( ev ) => {
@@ -469,7 +477,7 @@ export default class YITH_WCAN_Dropdown {
 			tabindex: -1,
 		} );
 
-		$item.on( 'keypress', ( ev ) => {
+		$item.on( 'keyup', ( ev ) => {
 			if ( ! Object.values( keys ).includes( ev?.keyCode ) ) {
 				return;
 			}
