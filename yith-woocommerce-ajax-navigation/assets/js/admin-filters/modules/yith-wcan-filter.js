@@ -842,8 +842,9 @@ export default class YITH_WCAN_Filter {
 		if ( toRemove.length || toAdd.length ) {
 			toAdd.length && ( this.termsPaginated = false );
 			this.$filter.find( '.terms-wrapper' ).data( 'terms', termsPool );
-			this.updateTerms( ignoreVisibility );
 		}
+
+		this.updateTerms( ignoreVisibility );
 	}
 
 	afterTermChanged( term ) {

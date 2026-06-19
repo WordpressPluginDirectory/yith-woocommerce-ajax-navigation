@@ -1519,8 +1519,8 @@ var YITH_WCAN_Filter = /*#__PURE__*/function () {
       if (toRemove.length || toAdd.length) {
         toAdd.length && (this.termsPaginated = false);
         this.$filter.find('.terms-wrapper').data('terms', termsPool);
-        this.updateTerms(ignoreVisibility);
       }
+      this.updateTerms(ignoreVisibility);
     }
   }, {
     key: "afterTermChanged",

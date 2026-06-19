@@ -1605,7 +1605,7 @@ var YITH_WCAN_Preset = /*#__PURE__*/function () {
           }, _this11.originalFilters)
         }).then(function (data) {
           var _data$data3;
-          var $items = $filter.find('.filter-content').children('.filter-items');
+          var $items = $filter.find('.filter-content .filter-items.level-0');
 
           // append new items to filter existing ones.
           $items.append(data.success ? data === null || data === void 0 ? void 0 : (_data$data3 = data.data) === null || _data$data3 === void 0 ? void 0 : _data$data3.html : '');
